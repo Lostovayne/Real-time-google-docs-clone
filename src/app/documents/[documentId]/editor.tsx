@@ -1,10 +1,11 @@
 "use client";
+import TaskItem from "@tiptap/extension-task-item";
+import TaskList from "@tiptap/extension-task-list";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
 export const Editor = () => {
   const editor = useEditor({
-    extensions: [StarterKit],
     editorProps: {
       attributes: {
         style: "padding-left: 56px; padding-right:56px;",
@@ -12,9 +13,11 @@ export const Editor = () => {
           "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text",
       },
     },
+    extensions: [StarterKit, TaskItem.configure({ nested: true }), TaskList],
     content: `
     <h1>Hi there</h1>
-  `,
+    `,
+    immediatelyRender: false, // Add this line to fix SSR hydration issue
   });
 
   return (
