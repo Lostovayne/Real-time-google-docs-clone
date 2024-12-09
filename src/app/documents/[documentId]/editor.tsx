@@ -31,20 +31,17 @@ const Editor = () => {
       TaskList,
     ],
     content: `
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <th colspan="3">Description</th>
-            </tr>
-            <tr>
-              <td>Cyndi Lauper</td>
-              <td>Singer</td>
-              <td>Songwriter</td>
-              <td>Actress</td>
-            </tr>
-          </tbody>
-        </table>
+        <h1>ProseMirror</h1>
+        <p>ProseMirror is a text editor library that allows you to build and use a text editor in a web browser.</p>
+        <p>ProseMirror is a text editor library that allows you to build and use a text editor in a web browser.</p>
+
+        <h2>Features</h2>
+        <ul>
+          <li>Rich text formatting</li>
+          <li>Collaboration</li>
+          <li>Customizable toolbar</li>
+        </ul>
+
       `,
     immediatelyRender: false,
   });
