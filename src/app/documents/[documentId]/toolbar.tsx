@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { useEditorStore } from "@/store/use-editor-store";
 import { Undo2Icon, type LucideIcon } from "lucide-react";
 import { ReactElement, type FC } from "react";
 
@@ -24,6 +25,9 @@ const ToolbarButton: FC<ToolbarButtonProps> = ({ onClick, isActive, icon: Icon }
 };
 
 const Toolbar = ({}): ReactElement => {
+  const editor = useEditorStore((state) => state.editor);
+  console.log({ Toolbar: editor });
+
   const section: { label: string; icon: LucideIcon; onClick: () => void; isActive: boolean }[][] = [
     [
       {

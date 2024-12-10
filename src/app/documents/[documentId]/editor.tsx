@@ -10,8 +10,15 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ImageResize from "tiptap-extension-resize-image";
 
+import { useEditorStore } from "@/store/use-editor-store";
+
 const Editor = () => {
+  const setEditor = useEditorStore((state) => state.setEditor);
+
   const editor = useEditor({
+    onCreate: ({ editor }) => {
+      setEditor(editor);
+    },
     editorProps: {
       attributes: {
         style: "padding-left: 56px; padding-right:56px;",
@@ -21,7 +28,7 @@ const Editor = () => {
     },
     extensions: [
       StarterKit,
-      Image,
+      // Image,
       ImageResize,
       Table,
       TableCell,
@@ -41,6 +48,9 @@ const Editor = () => {
           <li>Collaboration</li>
           <li>Customizable toolbar</li>
         </ul>
+
+        <img src="https://imgv3.fotor.com/images/side/Use-Fotors-Instagram-photo-editor-to-make-various-Instagram-photo-edits.jpg" />
+
 
       `,
     immediatelyRender: false,
