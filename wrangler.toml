@@ -1,0 +1,5 @@
+main = ".worker-next/index.mjs"
+name = "google-docs-clone"
+compatibility_date = "2024-12-09"
+compatibility_flags = ["nodejs_compat"]
+assets = { directory = ".worker-next/assets", binding = "ASSETS" }

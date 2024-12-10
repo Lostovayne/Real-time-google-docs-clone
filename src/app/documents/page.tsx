@@ -1,10 +1,7 @@
-import { FC, ReactElement } from "react";
+import { ReactElement } from "react";
 
-interface DocumentsPageProps {
-  // Prop types here
-}
 
-const DocumentsPage: FC<DocumentsPageProps> = ({}): ReactElement => {
+const DocumentsPage = (): ReactElement => {
   return <div>content</div>;
 };
 
