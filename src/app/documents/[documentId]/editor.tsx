@@ -13,12 +13,34 @@ import ImageResize from "tiptap-extension-resize-image";
 import { useEditorStore } from "@/store/use-editor-store";
 
 const Editor = () => {
-  const setEditor = useEditorStore((state) => state.setEditor);
+  const { setEditor } = useEditorStore();
 
   const editor = useEditor({
     onCreate: ({ editor }) => {
       setEditor(editor);
     },
+    onDestroy: () => {
+      setEditor(null);
+    },
+    onUpdate({ editor }) {
+      setEditor(editor);
+    },
+    onSelectionUpdate({ editor }) {
+      setEditor(editor);
+    },
+    onTransaction({ editor }) {
+      setEditor(editor);
+    },
+    onFocus({ editor }) {
+      setEditor(editor);
+    },
+    onBlur({ editor }) {
+      setEditor(editor);
+    },
+    onContentError({ editor }) {
+      setEditor(editor);
+    },
+
     editorProps: {
       attributes: {
         style: "padding-left: 56px; padding-right:56px;",
@@ -39,6 +61,8 @@ const Editor = () => {
     ],
     content: `
         <h1>ProseMirror</h1>
+        <h2>Subtitle</h2>
+        <h3> Sub-subtitle </h3>
         <p>ProseMirror is a text editor library that allows you to build and use a text editor in a web browser.</p>
         <p>ProseMirror is a text editor library that allows you to build and use a text editor in a web browser.</p>
 
