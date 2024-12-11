@@ -11,6 +11,9 @@ import StarterKit from "@tiptap/starter-kit";
 import ImageResize from "tiptap-extension-resize-image";
 
 import { useEditorStore } from "@/store/use-editor-store";
+import FontFamily from "@tiptap/extension-font-family";
+import TextStyle from "@tiptap/extension-text-style";
+import Underline from "@tiptap/extension-underline";
 
 const Editor = () => {
   const { setEditor } = useEditorStore();
@@ -50,7 +53,8 @@ const Editor = () => {
     },
     extensions: [
       StarterKit,
-      // Image,
+      FontFamily,
+      TextStyle,
       ImageResize,
       Table,
       TableCell,
@@ -58,20 +62,51 @@ const Editor = () => {
       TableRow,
       TaskItem.configure({ nested: true }),
       TaskList,
+      Underline,
     ],
     content: `
-        <h1>ProseMirror</h1>
-        <h2>Subtitle</h2>
-        <h3> Sub-subtitle </h3>
-        <p>ProseMirror is a text editor library that allows you to build and use a text editor in a web browser.</p>
-        <p>ProseMirror is a text editor library that allows you to build and use a text editor in a web browser.</p>
+        <h1 className="text-6xl font-bold">Deus Editor</h1>
 
-        <h2>Features</h2>
+        <p>
+          This is a simple example of what you can do with TipTap. You can use
+          it to create rich text editors. You can also use it to create simple
+          text editors.
+        </p>
+
+        <p className="italic">
+          This is an example of italic text. You can use it to add emphasis to
+          your text.
+        </p>
+
+        <p className="font-bold">
+          This is an example of bold text. You can use it to add emphasis to your
+          text.
+        </p>
+
         <ul>
-          <li>Rich text formatting</li>
-          <li>Collaboration</li>
-          <li>Customizable toolbar</li>
+          <li>This is a list of items</li>
+          <li>This is another item</li>
         </ul>
+
+        <p>
+          This is a paragraph of text. You can use it to add a block of text to
+          your document.
+        </p>
+
+        <p>
+          You can also add code blocks. This is an example of a code block.
+        </p>
+
+        <pre>
+          <code>
+            {
+              "name": "John Doe",
+              "age": 30,
+              " occupation": "Software Engineer"
+            }
+          </code>
+        </pre>
+
 
         <img src="https://imgv3.fotor.com/images/side/Use-Fotors-Instagram-photo-editor-to-make-various-Instagram-photo-edits.jpg" />
 
