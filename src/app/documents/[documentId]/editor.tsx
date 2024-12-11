@@ -1,5 +1,5 @@
 "use client";
-import Image from "@tiptap/extension-image";
+
 import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
@@ -11,12 +11,17 @@ import StarterKit from "@tiptap/starter-kit";
 import ImageResize from "tiptap-extension-resize-image";
 
 import { useEditorStore } from "@/store/use-editor-store";
+import Code from "@tiptap/extension-code";
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
+import { common, createLowlight } from "lowlight";
 
 const Editor = () => {
   const { setEditor } = useEditorStore();
+  const lowlight = createLowlight();
+  lowlight.register(common);
 
   const editor = useEditor({
     onCreate: ({ editor }) => {
@@ -54,7 +59,12 @@ const Editor = () => {
     extensions: [
       StarterKit,
       FontFamily,
+      CodeBlockLowlight.configure({
+        lowlight,
+        defaultLanguage: "javascript",
+      }),
       TextStyle,
+      Code,
       ImageResize,
       Table,
       TableCell,
@@ -97,15 +107,13 @@ const Editor = () => {
           You can also add code blocks. This is an example of a code block.
         </p>
 
-        <pre>
-          <code>
-            {
-              "name": "John Doe",
-              "age": 30,
-              " occupation": "Software Engineer"
-            }
-          </code>
-        </pre>
+        <pre><code>
+          const saludar = (nombre) => {
+            return \`Hola, \${nombre}\`;
+          };
+          console.log(saludar("Mundo"));
+        </code></pre>
+
 
 
         <img src="https://imgv3.fotor.com/images/side/Use-Fotors-Instagram-photo-editor-to-make-various-Instagram-photo-edits.jpg" />

@@ -1,11 +1,13 @@
 "use client";
-import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
 import {
   BoldIcon,
   ChevronDownIcon,
+  Code,
+  CodeIcon,
   ItalicIcon,
   ListTodoIcon,
   MessageSquarePlusIcon,
@@ -68,11 +70,28 @@ const FontFamilyButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="h-7 w-[120px] shrink-0 flex items-center justify-between rounded-sm hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm">
+        <button className="h-7 w-[120px] shrink-0 flex items-center justify-between rounded-sm hover:bg-neutral-200/80 px-2 overflow-hidden text-sm">
           <span className="truncate">{editor?.getAttributes("textStyle").fontFamily || "Arial"}</span>
           <ChevronDownIcon className="size-4 ml-2 shrink-0" />
         </button>
       </DropdownMenuTrigger>
+      <DropdownMenuContent className="p-1 flex flex-col gap-x-1">
+        {font.map(({ label, value }) => (
+          <button
+            key={label}
+            onClick={() => {
+              editor?.chain().focus().setFontFamily(value).run();
+            }}
+            className={cn(
+              "flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80",
+              editor?.getAttributes("textStyle").fontFamily === value && "bg-neutral-200/80"
+            )}
+            style={{ fontFamily: value }}
+          >
+            <span className="text-sm">{label}</span>
+          </button>
+        ))}
+      </DropdownMenuContent>
     </DropdownMenu>
   );
 };
@@ -129,6 +148,13 @@ const Toolbar = ({}) => {
         onClick: () => {
           const current = editor?.view.dom.getAttribute("spellcheck");
           editor?.view.dom.setAttribute("spellcheck", current === "false" ? "true" : "false");
+        },
+      },
+      {
+        label: "Code Block",
+        icon: CodeIcon,
+        onClick: () => {
+          editor?.chain().focus().toggleCodeBlock().run();
         },
       },
     ],
@@ -189,7 +215,7 @@ const Toolbar = ({}) => {
         <ToolbarButton key={item.label} {...item} />
       ))}
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
-      {/* {TODO: Font Family} */}
+      <FontFamilyButton />
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
       {/* TODO: Heading */}
       <Separator orientation="vertical" className="h-6 bg-neutral-300" />
