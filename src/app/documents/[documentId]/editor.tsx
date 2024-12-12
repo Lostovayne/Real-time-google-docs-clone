@@ -14,6 +14,7 @@ import { useEditorStore } from "@/store/use-editor-store";
 import Code from "@tiptap/extension-code";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import FontFamily from "@tiptap/extension-font-family";
+import Heading from "@tiptap/extension-heading";
 import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import { common, createLowlight } from "lowlight";
@@ -58,6 +59,7 @@ const Editor = () => {
     },
     extensions: [
       StarterKit,
+      Heading,
       FontFamily,
       CodeBlockLowlight.configure({
         lowlight,
