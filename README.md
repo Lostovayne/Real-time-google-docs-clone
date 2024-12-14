@@ -1,165 +1,182 @@
-````markdown
-# Real-Time Google Docs Clone
+# 🚀 Real Time Google Docs Clone
 
-This project is a real-time clone of Google Docs developed using [Next.js](https://nextjs.org) and [React](https://reactjs.org). It allows users to create and edit documents collaboratively, similar to the functionality provided by Google Docs.
+Un clon moderno y en tiempo real de Google Docs que permite la edición colaborativa de documentos. Este proyecto combina tecnologías de vanguardia para ofrecer una experiencia de edición fluida y en tiempo real.
 
-## Table of Contents
+## 📋 Tabla de Contenidos
 
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Functionality Overview](#functionality-overview)
-- [Contributions](#contributions)
-- [License](#license)
+- [Características](#características)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Comenzando](#comenzando)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Documentación API](#documentación-api)
+- [Contribución](#contribución)
+- [Pruebas](#pruebas)
+- [Despliegue](#despliegue)
+- [Licencia](#licencia)
 
-## Features
+## ✨ Características
 
-- **Real-Time Collaboration**: Multiple users can edit the same document simultaneously, with changes reflected instantly across all clients.
-- **Rich Text Editing**: Users can format text with bold, italics, underline, and various heading styles. Lists, block quotes, and code blocks are also supported.
-- **Image Insertion**: Users can easily insert images into their documents from URLs.
-- **Document Management**: Users can create, edit, and delete documents. Each document is uniquely identified by an ID.
-- **User Authentication**: Secure user authentication to ensure that only authorized users can access and edit documents.
-- **Version History**: Users can view and revert to previous versions of a document, allowing for easy recovery of lost changes.
-- **Comments and Suggestions**: Users can leave comments on specific parts of the document, facilitating discussions and feedback.
-- **Responsive Design**: The application is designed to work seamlessly on both desktop and mobile devices.
+- **Editor Rico en Tiempo Real**
 
-## Technologies Used
+  - Edición colaborativa en tiempo real
+  - Formateo de texto completo
+  - Soporte para imágenes y tablas
+  - Sistema de comentarios
+  - Listas y listas de tareas
+  - Resaltado de código
+  - Cambio de color de texto
+  - Cambio de familia de fuentes
+  - Subrayado y estilos de texto
+  - Tablas redimensionables
+  - Imágenes redimensionables
 
-- **Frontend**:
+- **Interfaz de Usuario Moderna**
 
-  - [Next.js](https://nextjs.org) for server-side rendering and static site generation.
-  - [React](https://reactjs.org) for building user interfaces.
-  - [Tailwind CSS](https://tailwindcss.com) for styling and responsive design.
-  - [Tiptap](https://tiptap.dev) for rich text editing capabilities.
+  - Diseño responsivo
+  - Tema claro/oscuro
+  - Barra de herramientas personalizable
+  - Interfaz intuitiva tipo Google Docs
+  - Visualización de datos interactiva
+  - Componentes UI modernos con Radix
+  - Sistema de notificaciones con Sonner
+  - Carruseles y navegación avanzada
 
-- **Backend**:
+- **Gestión de Documentos**
+  - Guardado automático
+  - Control de versiones
+  - Exportación a diferentes formatos
+  - Organización de documentos
+  - Compartir documentos
 
-  - [Cloudflare Workers](https://workers.cloudflare.com) for serverless functions and real-time data handling.
+## 🛠 Tecnologías Utilizadas
 
-- **State Management**:
+### Frontend
 
-  - [Zustand](https://github.com/pmndrs/zustand) for managing application state.
+- Next.js 15
+- React 19
+- TypeScript
+- TipTap Editor con extensiones:
+  - Code Block con sintaxis highlighting
+  - Tablas
+  - Listas de tareas
+  - Imágenes redimensionables
+  - Colores y resaltado
+- Zustand para gestión de estado
+- Tailwind CSS
+- ShadcN UI
+- Radix UI Components:
+  - Accordion
+  - Alert Dialog
+  - Avatar
+  - Context Menu
+  - Dialog
+  - Dropdown Menu
+  - Navigation Menu
+  - y más...
+- Lucide Icons
+- Sonner para notificaciones
+- React Hook Form
+- Zod para validación
+- Recharts para gráficos
+- Embla Carousel
 
-- **Form Handling**:
-  - [React Hook Form](https://react-hook-form.com) for efficient form management.
+### Backend
 
-## Installation
+- Cloudflare Workers
+- Node.js
+- WebSocket para tiempo real
 
-To get started with the project, follow these steps:
+### Testing
 
-1. Clone the repository:
+- Jest
+- React Testing Library
+- Cypress
 
-   ```bash
-   git clone https://github.com/your_username/google-docs-clone.git
-   ```
+### DevOps
 
-2. Navigate to the project directory:
+- GitHub Actions
+- Cloudflare
+- Wrangler CLI
 
-   ```bash
-   cd google-docs-clone
-   ```
+## 🚀 Comenzando
 
-3. Install the dependencies:
+### Prerrequisitos
 
-   ```bash
-   npm install
-   ```
+- Node.js (v16 o superior)
+- npm o yarn
+- Wrangler CLI (para desarrollo con Cloudflare Workers)
 
-   Or if you prefer using Yarn:
+### Instalación
 
-   ```bash
-   yarn install
-   ```
+1. Clonar el repositorio
 
-4. Run the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-   Or with Yarn:
-
-   ```bash
-   yarn dev
-   ```
-
-5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the application in action.
-
-## Usage
-
-Once the application is running, users can create and edit documents. The interface is designed to be intuitive, resembling Google Docs. Users can:
-
-- Create a new document by clicking on the "New Document" button.
-- Edit the document using the rich text editor, applying various formatting options.
-- Insert images by pasting the image URL.
-- Collaborate with others in real-time, seeing changes as they happen.
-- Leave comments on specific sections of the document for feedback.
-
-## Project Structure
-
-The project structure is organized as follows:
-
-```
-/google-docs-clone
-├── /src
-│   ├── /app
-│   │   ├── /documents
-│   │   │   ├── [documentId]
-│   │   │   │   ├── editor.tsx
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── toolbar.tsx
-│   │   │   └── page.tsx
-│   │   ├── layout.tsx
-│   │   └── globals.css
-│   ├── /components
-│   │   ├── /ui
-│   │   │   ├── alert.tsx
-│   │   │   ├── button.tsx
-│   │   │   ├── card.tsx
-│   │   │   ├── dialog.tsx
-│   │   │   ├── tooltip.tsx
-│   │   │   └── ...
-│   └── ...
-├── package.json
-├── tsconfig.json
-└── README.md
+```bash
+git clone https://github.com/usuario/real-time-google-docs-clone.git
+cd real-time-google-docs-clone
 ```
 
-## Functionality Overview
+2. Instalar dependencias
 
-### Real-Time Collaboration
+```bash
+npm install
+```
 
-The application uses WebSockets to enable real-time collaboration. When a user makes changes to a document, those changes are sent to the server and broadcasted to all connected clients, ensuring that everyone sees the latest version of the document.
+3. Configurar variables de entorno
 
-### Rich Text Editing
+```bash
+cp .env.example .env.local
+```
 
-The rich text editor allows users to format their text easily. Users can apply styles such as bold, italics, and underline, as well as create lists and insert code blocks. The editor is built using Tiptap, which provides a flexible and extensible editing experience.
+4. Iniciar el servidor de desarrollo
 
-### Document Management
+```bash
+npm run dev
+```
 
-Users can manage their documents through a simple interface. They can create new documents, open existing ones, and delete documents they no longer need. Each document is stored in a database and can be accessed using its unique ID.
+5. Para desarrollo con Cloudflare Workers
 
-### Comments and Suggestions
+```bash
+npm run dev:worker
+```
 
-Users can leave comments on specific sections of the document. This feature is useful for providing feedback or asking questions about certain parts of the text. Comments can be resolved or deleted as needed.
+El proyecto estará disponible en `http://localhost:3000`
 
-### Version History
+## Scripts Disponibles
 
-The application maintains a version history for each document. Users can view previous versions and revert to them if necessary, providing a safety net against accidental changes.
+```json
+{
+	"dev": "next dev",
+	"build": "next build",
+	"start": "next start",
+	"lint": "next lint",
+	"build:worker": "cloudflare",
+	"dev:worker": "wrangler dev --port 8771",
+	"preview:worker": "npm run build:worker && npm run dev:worker",
+	"deploy:worker": "npm run build:worker && wrangler deploy"
+}
+```
 
-## Contributions
+## 🧪 Pruebas
 
-Contributions are welcome! If you would like to contribute to this project, please follow these steps:
+```bash
+# Ejecutar pruebas unitarias
+npm run test
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/new-feature`).
-3. Make your changes and commit them (`git commit -m 'Add a new feature'`).
-4. Push to the branch (`git push origin feature/new-feature`).
-5. Open a Pull Request.
+# Ejecutar pruebas e2e
+npm run test:e2e
+```
 
-## License
+## 📦 Despliegue
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-````
+```bash
+# Construir para producción
+npm run build
+
+# Desplegar en Cloudflare Workers
+npm run deploy:worker
+```
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
