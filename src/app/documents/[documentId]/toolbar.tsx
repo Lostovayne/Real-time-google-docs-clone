@@ -2,8 +2,7 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
-
-import { type ColorResult, CirclePicker, SketchPicker } from 'react-color';
+import { CirclePicker, SketchPicker, type ColorResult } from 'react-color';
 
 import { useEditorStore } from '@/store/use-editor-store';
 import {
