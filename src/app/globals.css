@@ -93,6 +93,17 @@ body {
 
   /* Code Block */
 
+  /* Link styles */
+  a {
+    color: rgb(53, 53, 231);
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+      color: rgba(143, 142, 142, 0.459);
+    }
+  }
+
   pre {
     background-color: #1e1e1e;
     border-radius: 0.5rem;

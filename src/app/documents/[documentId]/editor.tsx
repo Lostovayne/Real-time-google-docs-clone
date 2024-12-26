@@ -6,6 +6,7 @@ import { Color } from '@tiptap/extension-color';
 import FontFamily from '@tiptap/extension-font-family';
 import Heading from '@tiptap/extension-heading';
 import Highlight from '@tiptap/extension-highlight';
+import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import Table from '@tiptap/extension-table';
 import TableCell from '@tiptap/extension-table-cell';
@@ -80,6 +81,7 @@ const Editor = () => {
       TextStyle,
       Code,
       ImageResize,
+      Image,
       Table,
       TableCell,
       TableHeader,
@@ -128,9 +130,7 @@ const Editor = () => {
           console.log(saludar("Mundo"));
         </code></pre>
 
-
-
-        <img src="https://imgv3.fotor.com/images/side/Use-Fotors-Instagram-photo-editor-to-make-various-Instagram-photo-edits.jpg" />
+        <img src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg" />
 
 
       `,
