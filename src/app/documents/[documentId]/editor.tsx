@@ -14,12 +14,13 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
+import TextAlign from "@tiptap/extension-text-align";
 import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import ImageResize from "tiptap-extension-resize-image";
-import TextAlign from "@tiptap/extension-text-align";
 
+import { FontSize } from '@/extensions/font-size';
 import { useEditorStore } from "@/store/use-editor-store";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { common, createLowlight } from "lowlight";
@@ -64,6 +65,7 @@ const Editor = () => {
 		},
 		extensions: [
 			StarterKit,
+			FontSize,
 			Heading,
 			FontFamily,
 			Color,

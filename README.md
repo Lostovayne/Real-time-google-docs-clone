@@ -2,6 +2,11 @@
 
 Un clon moderno y en tiempo real de Google Docs que permite la edición colaborativa de documentos. Este proyecto combina tecnologías de vanguardia para ofrecer una experiencia de edición fluida y en tiempo real.
 
+
+
+<img src="./public/resources.png" >
+
+
 ## 📋 Tabla de Contenidos
 
 - [Características](#características)
