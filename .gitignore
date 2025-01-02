@@ -41,3 +41,6 @@ next-env.d.ts
 .worker-next
 
 .windsurfrules
+.open-next
+
+.wrangler
