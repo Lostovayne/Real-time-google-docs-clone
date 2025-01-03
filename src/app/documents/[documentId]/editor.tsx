@@ -20,7 +20,7 @@ import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import ImageResize from "tiptap-extension-resize-image";
 
-import { FontSize } from '@/extensions/font-size';
+import { FontSize } from "@/extensions/font-size";
 import { useEditorStore } from "@/store/use-editor-store";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { common, createLowlight } from "lowlight";
