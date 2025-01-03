@@ -32,6 +32,7 @@ import
 		ListTodoIcon,
 		MessageSquarePlusIcon,
 		MinusIcon,
+		PlusIcon,
 		PrinterIcon,
 		Redo2Icon,
 		RemoveFormatting,
@@ -47,22 +48,29 @@ import { CirclePicker, SketchPicker, type ColorResult } from 'react-color';
 
 const FontSizeButton = () => {
   const { editor } = useEditorStore();
+
   const currentFontSize =
     editor?.getAttributes('textStyle').fontSize ?
       editor?.getAttributes('textStyle').fontSize.replace('px', '')
     : '16';
 
+
   const [fontSize, setFontSize] = useState(currentFontSize);
-  const [inputValue, setInputValue] = useState(fontSize);
+  const [inputValue, setInputValue] = useState(currentFontSize);
   const [isEditing, setIsEditing] = useState(false);
+
+  if (currentFontSize !== fontSize) {
+    setFontSize(currentFontSize);
+    setInputValue(currentFontSize);
+  }
 
   const updateFontSize = (newSize: string) => {
     const size = parseInt(newSize);
     if (!isNaN(size) && size > 0) {
-      editor?.chain().focus().setFontSize(`${size}px`).run();
       setFontSize(newSize);
       setInputValue(newSize);
       setIsEditing(false);
+      editor?.commands.setFontSize(`${size}px`);
     }
   };
 
@@ -84,8 +92,8 @@ const FontSizeButton = () => {
   };
 
   const increment = () => {
-    const newSize = parseInt(fontSize) + 1;
-    updateFontSize(newSize.toString());
+    // const newSize = parseInt(fontSize) + 1;
+    updateFontSize((parseInt(fontSize) + 1).toString());
   };
 
   const decrement = () => {
@@ -103,7 +111,7 @@ const FontSizeButton = () => {
       {isEditing ?
         <input
           type='text'
-					autoFocus
+          autoFocus
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
@@ -116,9 +124,12 @@ const FontSizeButton = () => {
             setFontSize(currentFontSize);
           }}
           className='h-7 w-10 text-sm border border-neutral-300 text-center rounded-sm cursor-text'>
-          {currentFontSize}
+          {fontSize}
         </button>
       }
+      <button className='size-7 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80'>
+        <PlusIcon className='size-4' onClick={increment} />
+      </button>
     </div>
   );
 };
