@@ -47,10 +47,9 @@ import { CirclePicker, SketchPicker, type ColorResult } from "react-color";
 const FontSizeButton = () => {
 	const { editor } = useEditorStore();
 
-	const currentFontSize =
-		editor?.getAttributes("textStyle").fontSize ?
-			editor?.getAttributes("textStyle").fontSize.replace("px", "")
-		:	"16";
+	const currentFontSize = editor?.getAttributes("textStyle").fontSize
+		? editor?.getAttributes("textStyle").fontSize.replace("px", "")
+		: "16";
 
 	const [fontSize, setFontSize] = useState(currentFontSize);
 	const [inputValue, setInputValue] = useState(currentFontSize);
@@ -104,7 +103,7 @@ const FontSizeButton = () => {
 			<button className="size-7 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80">
 				<MinusIcon className="size-4" onClick={decrement} />
 			</button>
-			{isEditing ?
+			{isEditing ? (
 				<input
 					type="text"
 					autoFocus
@@ -114,7 +113,8 @@ const FontSizeButton = () => {
 					onKeyDown={handleInputKeyDown}
 					className="h-7 w-10 text-sm border border-neutral-300 text-center rounded-sm bg-transparent focus:outline-none focus:ring-0"
 				/>
-			:	<button
+			) : (
+				<button
 					onClick={() => {
 						setIsEditing(true);
 						setFontSize(currentFontSize);
@@ -122,7 +122,7 @@ const FontSizeButton = () => {
 					className="h-7 w-10 text-sm border border-neutral-300 text-center rounded-sm cursor-text">
 					{fontSize}
 				</button>
-			}
+			)}
 			<button className="size-7 shrink-0 flex items-center justify-center rounded-sm hover:bg-neutral-200/80">
 				<PlusIcon className="size-4" onClick={increment} />
 			</button>
@@ -161,7 +161,7 @@ const ListButton = () => {
 						key={label}
 						onClick={onClick}
 						className={cn(
-							"flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80",
+							"flex items-center gap-x-2 px-2 py-1 w-full hover:bg-neutral-200/80",
 							isActive() && "bg-neutral-200/80"
 						)}>
 						<Icon className="size-4" />
@@ -214,7 +214,7 @@ const AlignButton = () => {
 							editor?.chain().focus().setTextAlign(value).run();
 						}}
 						className={cn(
-							"flex items-center gap-x-2 px-2 py-1 rounded-sm hover:bg-neutral-200/80",
+							"flex items-center gap-x-2 px-2 py-1 w-full hover:bg-neutral-200/80",
 							editor?.isActive("textAlign", { value }) && "bg-neutral-200/80"
 						)}>
 						<Icon className="size-4" />
